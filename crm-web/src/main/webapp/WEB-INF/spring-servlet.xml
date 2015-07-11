@@ -12,7 +12,7 @@
     <mvc:annotation-driven />
     <mvc:default-servlet-handler/>
     <context:component-scan base-package="org.pnt.product.resource" />
-    <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/> -->
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
-    <import resource="classpath*:spring-context.xml" />
+    <import resource="classpath:spring-context.xml" />
 </beans>

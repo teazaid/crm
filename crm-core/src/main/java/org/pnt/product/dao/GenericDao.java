@@ -1,13 +1,13 @@
 package org.pnt.product.dao;
 
+import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 /**
  * Created by Alexander on 09.06.2015.
  */
-public class AbstractDao<T> {
+public abstract class GenericDao<T> {
     @PersistenceContext
     private EntityManager em;
 

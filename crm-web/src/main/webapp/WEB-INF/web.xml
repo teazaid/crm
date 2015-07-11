@@ -19,13 +19,13 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
-    <listener>
+    <!-- <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:spring-config.xml</param-value>
-    </context-param>
+    </context-param> -->
 
 </web-app>
