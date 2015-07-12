@@ -1,21 +1,24 @@
 package org.pnt.product.resource;
 
-import org.codehaus.jackson.annotate.JsonAutoDetect;
+
+import org.pnt.product.Util;
+import org.pnt.product.model.Person;
 import org.pnt.product.org.pnt.product.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 
 /**
  * Created by Alexander on 09.06.2015.
  */
 @Controller
-@RequestMapping(value = "/rest/person", produces = "application/json")
+@RequestMapping(value = "/rest/person", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PersonResource {
 
     @Autowired
@@ -23,17 +26,14 @@ public class PersonResource {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     @ResponseBody
-    public String create() {
-        personService.createNewPerson("");
-        return "sds";
+    public Person create() {
+        Person newPerson = personService.createNewPerson("");
+        return newPerson;
     }
 
-    @JsonAutoDetect
-    private class Resp {
-        //personService.createNewPerson("sd");
-
-        private String hello = "hello";
+    @RequestMapping(value = "/{uuid}", method = RequestMethod.GET)
+    @ResponseBody
+    public Person findByUuid(@PathVariable("uuid") long uuid) {
+        return personService.findByUuid(uuid).iterator().next();
     }
-
-
 }

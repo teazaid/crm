@@ -1,13 +1,23 @@
 package org.pnt.product.model;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.pnt.product.Util;
+import org.pnt.product.listeners.UuidListener;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Alexander on 08.06.2015.
  */
+@NamedQueries({
+        @NamedQuery(name = Util.PersonQueries.BY_UUID, query = "select p from Person p where p.uuid = ?1"),
+        @NamedQuery(name = Util.PersonQueries.BY_EMAIL, query = "select p from Person p where p.email = ?1")
+})
 @Entity
-public class Person {
+@EntityListeners(value = {UuidListener.class})
+public class Person implements Serializable, Uuidable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -17,10 +27,10 @@ public class Person {
     private String firstName;
     private String lastName;
     private String middleName;
+    private long uuid;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date birthday;
-
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Temporal(TemporalType.TIMESTAMP)
@@ -52,6 +62,19 @@ public class Person {
 
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(email)
+                .append(firstName)
+                .append(lastName)
+                .append(middleName)
+                .append(birthday)
+                .append(createdAt)
+                .append(updatedAt)
+                .toHashCode();
     }
 
     public void setLastName(String lastName) {
@@ -88,5 +111,13 @@ public class Person {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public long getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(long uuid) {
+        this.uuid = uuid;
     }
 }
