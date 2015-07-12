@@ -13,9 +13,9 @@ public class Subscription {
     private Long id;
 
     @ManyToOne
-    private Trainee trainee;
+    private Person trainee;
     @ManyToOne
-    private Trainer trainer;
+    private Person trainer;
 
     @OneToMany
     private Collection<Visit> visits;
@@ -36,19 +36,19 @@ public class Subscription {
         this.id = id;
     }
 
-    public Trainee getTrainee() {
+    public Person getTrainee() {
         return trainee;
     }
 
-    public void setTrainee(Trainee trainee) {
+    public void setTrainee(Person trainee) {
         this.trainee = trainee;
     }
 
-    public Trainer getTrainer() {
+    public Person getTrainer() {
         return trainer;
     }
 
-    public void setTrainer(Trainer trainer) {
+    public void setTrainer(Person trainer) {
         this.trainer = trainer;
     }
 
