@@ -1,7 +1,9 @@
 package org.pnt.product.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.pnt.product.NamedQueries;
+import org.pnt.product.deserializer.PersonDeserializer;
 import org.pnt.product.listeners.UuidListener;
 
 import javax.persistence.*;
@@ -17,6 +19,7 @@ import java.util.Date;
 })
 @Entity
 @EntityListeners(value = {UuidListener.class})
+@JsonDeserialize(using = PersonDeserializer.class)
 public class Person implements Uuidable, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
