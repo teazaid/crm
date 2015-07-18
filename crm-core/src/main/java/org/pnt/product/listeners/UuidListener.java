@@ -9,6 +9,9 @@ import java.util.UUID;
  * Created by Alexander on 12.07.2015.
  */
 public class UuidListener {
+    public UuidListener() {
+    }
+
     @PrePersist
     public void generateUuid(Uuidable uuidable) {
         uuidable.setUuid(UUID.randomUUID().getMostSignificantBits());

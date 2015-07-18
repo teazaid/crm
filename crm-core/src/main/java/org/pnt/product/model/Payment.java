@@ -1,29 +1,48 @@
 package org.pnt.product.model;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.pnt.product.listeners.UuidListener;
 import org.pnt.product.model.enumerate.PaymentMethod;
 import org.pnt.product.model.enumerate.PaymentStatus;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Alexander on 08.06.2015.
  */
 @Entity
-public class Payment {
+@EntityListeners(value = {UuidListener.class})
+public class Payment implements Uuidable, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private Long uuid;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date executedAt;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
     @ManyToOne
     private Person createdBy;
+
+    public Subscription getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
+    }
+
+    @ManyToOne
+    private Subscription subscription;
 
     private Long amount;
 
@@ -98,5 +117,33 @@ public class Payment {
 
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public Long getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(Long uuid) {
+        this.uuid = uuid;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(subscription)
+                .append(createdAt)
+                .append(executedAt)
+                .append(updatedAt)
+                .append(createdBy)
+                .append(amount)
+                .append(paymentStatus)
+                .append(paymentMethod)
+        .toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO implementation is expected
+        return super.equals(obj);
     }
 }

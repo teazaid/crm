@@ -1,7 +1,12 @@
 package org.pnt.product.model;
 
+import org.pnt.product.model.enumerate.DiscountType;
+import org.pnt.product.model.enumerate.PromoType;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  * Created by Alexander on 08.06.2015.
@@ -9,15 +14,49 @@ import java.util.Date;
 @Entity
 public class Promo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long discountType;
+    @Enumerated(EnumType.STRING)
+    private DiscountType discountType;
+
+    @Enumerated(EnumType.STRING)
+    private PromoType type;
+
     private Long discountAmount;
-    private Long used;
+
+    private Long usedAmount;
+
+    @OneToMany(mappedBy = "promo")
+    private Collection<Subscription> subscriptions;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    public Collection<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setAddSubscription(Subscription subscription) {
+        this.subscriptions.add(subscription);
+    }
+
+    public void setSubscriptions(Collection<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
+    }
+
+    public PromoType getType() {
+        return type;
+    }
+
+    public void setType(PromoType type) {
+        this.type = type;
+    }
+
+    public Promo() {
+        subscriptions = new HashSet<Subscription>();
+
+    }
 
     public Long getId() {
         return id;
@@ -27,11 +66,11 @@ public class Promo {
         this.id = id;
     }
 
-    public Long getDiscountType() {
+    public DiscountType getDiscountType() {
         return discountType;
     }
 
-    public void setDiscountType(Long discountType) {
+    public void setDiscountType(DiscountType discountType) {
         this.discountType = discountType;
     }
 
@@ -43,12 +82,12 @@ public class Promo {
         this.discountAmount = discountAmount;
     }
 
-    public Long getUsed() {
-        return used;
+    public Long getUsedAmount() {
+        return usedAmount;
     }
 
-    public void setUsed(Long used) {
-        this.used = used;
+    public void setUsedAmount(Long used) {
+        this.usedAmount = used;
     }
 
     public Date getCreatedAt() {
@@ -57,5 +96,17 @@ public class Promo {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public int hashCode() {
+        //TODO implementation is expected
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO implementation is expected
+        return super.equals(obj);
     }
 }

@@ -1,23 +1,36 @@
 package org.pnt.product.model;
 
+import org.pnt.product.listeners.UuidListener;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.UUID;
 
 /**
  * Created by Alexander on 08.06.2015.
  */
-public class Subscription {
+@Entity
+@EntityListeners(value = {UuidListener.class})
+public class Subscription implements Uuidable, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    private Long uuid;
+
+    @OneToMany(mappedBy = "subscription")
+    private Collection<Payment> payments;
+
+    @OneToOne
     private Person trainee;
-    @ManyToOne
+
+    @OneToOne
     private Person trainer;
 
-    @OneToMany
+    @OneToMany(mappedBy = "subscription")
     private Collection<Visit> visits;
 
     @ManyToOne
@@ -25,8 +38,14 @@ public class Subscription {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
+
+    public Subscription() {
+        visits = new HashSet<Visit>();
+        payments = new HashSet<Payment>();
+    }
 
     public Long getId() {
         return id;
@@ -42,6 +61,18 @@ public class Subscription {
 
     public void setTrainee(Person trainee) {
         this.trainee = trainee;
+    }
+
+    public Collection<Payment> getPayments() {
+        return payments;
+    }
+
+    public void addPayment(Payment payment) {
+        this.payments.add(payment);
+    }
+
+    public void setPayments(Collection<Payment> payments) {
+        this.payments = payments;
     }
 
     public Person getTrainer() {
@@ -82,5 +113,25 @@ public class Subscription {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Long getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(Long uuid) {
+        this.uuid = uuid;
+    }
+
+    @Override
+    public int hashCode() {
+        //TODO implementation is expected
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO implementation is expected
+        return super.equals(obj);
     }
 }

@@ -17,17 +17,20 @@ import java.util.Date;
 })
 @Entity
 @EntityListeners(value = {UuidListener.class})
-public class Person implements Serializable, Uuidable {
+public class Person implements Uuidable, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Long uuid;
+
     private String email;
 
     private String firstName;
+
     private String lastName;
+
     private String middleName;
-    private long uuid;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date birthday;
@@ -74,7 +77,53 @@ public class Person implements Serializable, Uuidable {
                 .append(birthday)
                 .append(createdAt)
                 .append(updatedAt)
-                .toHashCode();
+        .toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj != null && obj instanceof Person) {
+            Person that = (Person) obj;
+            if(that.id.equals(this.id)) {
+                return true;
+            }
+
+            if((this.birthday != null && this.birthday.equals(that.birthday)) ||
+                    (this.birthday == null && that.birthday == null)) {
+                return false;
+            }
+
+            if((this.createdAt != null && this.createdAt.equals(that.createdAt)) ||
+                    (this.createdAt == null && that.createdAt == null)) {
+                return false;
+            }
+
+            if((this.email != null && this.email.equals(that.email)) ||
+                    (this.email == null && that.email == null)) {
+                return false;
+            }
+
+            if((this.firstName != null && this.firstName.equals(that.firstName)) ||
+                    (this.firstName == null && that.firstName == null)) {
+                return false;
+            }
+
+            if((this.lastName != null && this.lastName.equals(that.lastName)) ||
+                    (this.lastName == null && that.lastName == null)) {
+                return false;
+            }
+
+            if((this.middleName != null && this.middleName.equals(that.middleName)) ||
+                    (this.middleName == null && that.middleName == null)) {
+                return false;
+            }
+
+            if((this.updatedAt != null && this.updatedAt.equals(that.updatedAt)) ||
+                    (this.updatedAt == null && that.updatedAt == null)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void setLastName(String lastName) {
@@ -113,11 +162,11 @@ public class Person implements Serializable, Uuidable {
         this.updatedAt = updatedAt;
     }
 
-    public long getUuid() {
+    public Long getUuid() {
         return uuid;
     }
 
-    public void setUuid(long uuid) {
+    public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
 }
