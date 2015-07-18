@@ -9,6 +9,13 @@
         <hibernate.version>4.3.10.Final</hibernate.version>
         <spring.version>4.1.6.RELEASE</spring.version>
         <jackson.version>1.9.10</jackson.version>
+        <h2.version>1.4.187</h2.version>
+        <jackson.version>2.6.0-rc3</jackson.version>
+        <uuid.generator.version>3.1.4</uuid.generator.version>
+        <apache.commons.version>3.4</apache.commons.version>
+        <hikari.version>2.3.8</hikari.version>
+        <slf4j.version>1.7.12</slf4j.version>
+        <testng.version>6.9.6</testng.version>
     </properties>
 
     <groupId>org.pnt.product</groupId>
@@ -45,7 +52,7 @@
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>1.4.187</version>
+                <version>${h2.version}</version>
             </dependency>
 
             <dependency>
@@ -105,53 +112,56 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>2.6.0-rc3</version>
+                <version>${jackson.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
-                <version>2.6.0-rc3</version>
+                <version>${jackson.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
-                <version>2.6.0-rc3</version>
+                <version>${jackson.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.fasterxml.uuid</groupId>
                 <artifactId>java-uuid-generator</artifactId>
-                <version>3.1.4</version>
+                <version>${uuid.generator.version}</version>
             </dependency>
-
 
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.4</version>
+                <version>${apache.commons.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.zaxxer</groupId>
                 <artifactId>HikariCP</artifactId>
-                <version>2.3.8</version>
+                <version>${hikari.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.12</version>
+                <version>${slf4j.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
-                <version>1.7.12</version>
+                <version>${slf4j.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>
