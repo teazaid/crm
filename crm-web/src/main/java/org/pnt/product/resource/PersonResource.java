@@ -1,7 +1,6 @@
 package org.pnt.product.resource;
 
 
-import org.pnt.product.Util;
 import org.pnt.product.model.Person;
 import org.pnt.product.org.pnt.product.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.io.Serializable;
 
 /**
  * Created by Alexander on 09.06.2015.

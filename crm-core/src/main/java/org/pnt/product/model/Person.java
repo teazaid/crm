@@ -1,7 +1,7 @@
 package org.pnt.product.model;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.pnt.product.Util;
+import org.pnt.product.NamedQueries;
 import org.pnt.product.listeners.UuidListener;
 
 import javax.persistence.*;
@@ -11,9 +11,9 @@ import java.util.Date;
 /**
  * Created by Alexander on 08.06.2015.
  */
-@NamedQueries({
-        @NamedQuery(name = Util.PersonQueries.BY_UUID, query = "select p from Person p where p.uuid = ?1"),
-        @NamedQuery(name = Util.PersonQueries.BY_EMAIL, query = "select p from Person p where p.email = ?1")
+@javax.persistence.NamedQueries({
+        @NamedQuery(name = NamedQueries.Person.BY_UUID, query = "select p from Person p where p.uuid = ?1"),
+        @NamedQuery(name = NamedQueries.Person.BY_EMAIL, query = "select p from Person p where p.email = ?1")
 })
 @Entity
 @EntityListeners(value = {UuidListener.class})
