@@ -5,7 +5,6 @@
     <persistence-unit name="crm-pu" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-
         <class>org.pnt.product.model.Person</class>
         <class>org.pnt.product.model.Payment</class>
         <class>org.pnt.product.model.Promo</class>

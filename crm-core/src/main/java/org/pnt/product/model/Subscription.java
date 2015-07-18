@@ -1,13 +1,13 @@
 package org.pnt.product.model;
 
 import org.pnt.product.listeners.UuidListener;
+import org.pnt.product.model.enumerate.SubscriptionType;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.UUID;
 
 /**
  * Created by Alexander on 08.06.2015.
@@ -20,6 +20,11 @@ public class Subscription implements Uuidable, Serializable {
     private Long id;
 
     private Long uuid;
+
+    private Long amount;
+
+    @Enumerated
+    private SubscriptionType subscriptionType;
 
     @OneToMany(mappedBy = "subscription")
     private Collection<Payment> payments;
@@ -121,6 +126,22 @@ public class Subscription implements Uuidable, Serializable {
 
     public void setUuid(Long uuid) {
         this.uuid = uuid;
+    }
+
+    public SubscriptionType getSubscriptionType() {
+        return subscriptionType;
+    }
+
+    public void setSubscriptionType(SubscriptionType subscriptionType) {
+        this.subscriptionType = subscriptionType;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     @Override
