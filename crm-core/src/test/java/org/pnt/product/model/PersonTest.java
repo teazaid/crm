@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -22,6 +23,9 @@ public class PersonTest {
     @DataProvider
     public Object[][] persons() {
         Date now = DateUtils.now();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(1989l);
+        Date notNow = calendar.getTime();
         String testEmail = "testEmail";
         String testFirstName = "testFirstName";
         String testLastName = "testLastName";
@@ -97,7 +101,7 @@ public class PersonTest {
                 .build();
 
         Person diffBirthdayPerson = new PersonBuilder()
-                .setBirthDay(DateUtils.now())
+                .setBirthDay(notNow)
                 .setCreatedAt(now)
                 .setUpdatedAt(now)
                 .setEmail(testEmail)
@@ -109,7 +113,7 @@ public class PersonTest {
 
         Person diffCreatedAtPerson = new PersonBuilder()
                 .setBirthDay(now)
-                .setCreatedAt(DateUtils.now())
+                .setCreatedAt(notNow)
                 .setUpdatedAt(now)
                 .setEmail(testEmail)
                 .setFirstName(testFirstName)
@@ -121,7 +125,7 @@ public class PersonTest {
         Person diffUpdatedAtPerson = new PersonBuilder()
                 .setBirthDay(now)
                 .setCreatedAt(now)
-                .setUpdatedAt(DateUtils.now())
+                .setUpdatedAt(notNow)
                 .setEmail(testEmail)
                 .setFirstName(testFirstName)
                 .setLastName(testLastName)

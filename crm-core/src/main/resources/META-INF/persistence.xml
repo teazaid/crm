@@ -7,6 +7,10 @@
 
 
         <class>org.pnt.product.model.Person</class>
+        <class>org.pnt.product.model.Payment</class>
+        <class>org.pnt.product.model.Promo</class>
+        <class>org.pnt.product.model.Subscription</class>
+        <class>org.pnt.product.model.Visit</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
