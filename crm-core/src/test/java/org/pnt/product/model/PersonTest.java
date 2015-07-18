@@ -39,6 +39,17 @@ public class PersonTest {
                 .setUuid(777l)
                 .build();
 
+        Person fullPerson2 = new PersonBuilder()
+                .setBirthDay(now)
+                .setCreatedAt(now)
+                .setUpdatedAt(now)
+                .setEmail(testEmail)
+                .setFirstName(testFirstName)
+                .setLastName(testLastName)
+                .setMiddleName(testMiddleName)
+                .setUuid(777l)
+                .build();
+
         Person emptyPerson = new PersonBuilder().build();
         Person idPerson = new PersonBuilder().setId(0l).build();
 
@@ -120,6 +131,7 @@ public class PersonTest {
 
         return new Object[][] {
                 new Object[]{fullPerson, fullPerson, true},
+                new Object[]{fullPerson, fullPerson2, true},
                 new Object[]{fullPerson, idPerson, true},
                 new Object[]{fullPerson, emptyPerson, false},
                 new Object[]{fullPerson, diffEmailPerson, false},

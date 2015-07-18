@@ -84,7 +84,7 @@ public class Person implements Uuidable, Serializable {
     public boolean equals(Object obj) {
         if(obj != null && obj instanceof Person) {
             Person that = (Person) obj;
-            if(that.id != null && that.id.equals(this.id)) {
+            if(this == that || (that.id != null && that.id.equals(this.id))) {
                 return true;
             }
 
