@@ -84,44 +84,46 @@ public class Person implements Uuidable, Serializable {
     public boolean equals(Object obj) {
         if(obj != null && obj instanceof Person) {
             Person that = (Person) obj;
-            if(that.id.equals(this.id)) {
+            if(that.id != null && that.id.equals(this.id)) {
                 return true;
             }
 
-            if((this.birthday != null && this.birthday.equals(that.birthday)) ||
-                    (this.birthday == null && that.birthday == null)) {
+            if((this.birthday != null && !this.birthday.equals(that.birthday)) ||
+                    (this.birthday == null && that.birthday != null)) {
                 return false;
             }
 
-            if((this.createdAt != null && this.createdAt.equals(that.createdAt)) ||
-                    (this.createdAt == null && that.createdAt == null)) {
+            if((this.createdAt != null && !this.createdAt.equals(that.createdAt)) ||
+                    (this.createdAt == null && that.createdAt != null)) {
                 return false;
             }
 
-            if((this.email != null && this.email.equals(that.email)) ||
-                    (this.email == null && that.email == null)) {
+            if((this.email != null && !this.email.equals(that.email)) ||
+                    (this.email == null && that.email != null)) {
                 return false;
             }
 
-            if((this.firstName != null && this.firstName.equals(that.firstName)) ||
-                    (this.firstName == null && that.firstName == null)) {
+            if((this.firstName != null && !this.firstName.equals(that.firstName)) ||
+                    (this.firstName == null && that.firstName != null)) {
                 return false;
             }
 
-            if((this.lastName != null && this.lastName.equals(that.lastName)) ||
-                    (this.lastName == null && that.lastName == null)) {
+            if((this.lastName != null && !this.lastName.equals(that.lastName)) ||
+                    (this.lastName == null && that.lastName != null)) {
                 return false;
             }
 
-            if((this.middleName != null && this.middleName.equals(that.middleName)) ||
-                    (this.middleName == null && that.middleName == null)) {
+            if((this.middleName != null && !this.middleName.equals(that.middleName)) ||
+                    (this.middleName == null && that.middleName != null)) {
                 return false;
             }
 
-            if((this.updatedAt != null && this.updatedAt.equals(that.updatedAt)) ||
-                    (this.updatedAt == null && that.updatedAt == null)) {
+            if((this.updatedAt != null && !this.updatedAt.equals(that.updatedAt)) ||
+                    (this.updatedAt == null && that.updatedAt != null)) {
                 return false;
             }
+        } else {
+            return false;
         }
         return true;
     }
