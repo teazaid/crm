@@ -1,4 +1,4 @@
-package org.pnt.product.model.org.pnt.product.util;
+package org.pnt.product.utils;
 
 import org.pnt.product.model.Person;
 

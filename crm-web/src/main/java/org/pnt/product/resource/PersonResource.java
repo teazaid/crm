@@ -24,6 +24,7 @@ public class PersonResource {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     @ResponseBody
     public Person create() {
+
         Person newPerson = personService.createNewPerson("");
         return newPerson;
     }

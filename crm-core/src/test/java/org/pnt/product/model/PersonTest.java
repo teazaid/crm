@@ -1,6 +1,6 @@
 package org.pnt.product.model;
 
-import org.pnt.product.model.org.pnt.product.util.PersonBuilder;
+import org.pnt.product.utils.PersonBuilder;
 import org.pnt.product.utils.DateUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
