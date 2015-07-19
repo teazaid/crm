@@ -3,7 +3,6 @@ package org.pnt.product.deserializer;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.ObjectCodec;
-import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -26,15 +25,15 @@ public class PersonDeserializer extends JsonDeserializer<Person> {
         JsonNode jsonNode = codec.readTree(jsonParser);
         // TODO cover with the tests
         return new PersonBuilder()
-                .setBirthDay(jsonNodeToDate(jsonNode, "birthDay"))
-                .setCreatedAt(jsonNodeToDate(jsonNode, "createdAt"))
-                .setEmail(jsonNodeToString(jsonNode, "email"))
-                .setFirstName(jsonNodeToString(jsonNode, "firstName"))
-                .setId(jsonNodeToLong(jsonNode, "id"))
-                .setLastName(jsonNodeToString(jsonNode, "lastName"))
-                .setMiddleName(jsonNodeToString(jsonNode, "middleName"))
-                .setUpdatedAt(jsonNodeToDate(jsonNode, "updatedAt"))
-                .setUuid(jsonNodeToLong(jsonNode, "uuid"))
+                .setBirthDay(jsonNodeToDate(jsonNode, BIRTH_DAY))
+                .setCreatedAt(jsonNodeToDate(jsonNode, CREATED_AT))
+                .setEmail(jsonNodeToString(jsonNode, EMAIL))
+                .setFirstName(jsonNodeToString(jsonNode, FIRST_NAME))
+                .setId(jsonNodeToLong(jsonNode, ID))
+                .setLastName(jsonNodeToString(jsonNode, LAST_NAME))
+                .setMiddleName(jsonNodeToString(jsonNode, MIDDLE_NAME))
+                .setUpdatedAt(jsonNodeToDate(jsonNode, UPDATED_AT))
+                .setUuid(jsonNodeToLong(jsonNode, UUID))
         .build();
     }
 
@@ -57,4 +56,14 @@ public class PersonDeserializer extends JsonDeserializer<Person> {
         JsonNode jsonNode = node.get(key);
         return jsonNode == null ? null : jsonNode.longValue();
     }
+
+    private static final String BIRTH_DAY = "birthDay";
+    private static final String CREATED_AT = "createdAt";
+    private static final String EMAIL = "email";
+    private static final String FIRST_NAME = "firstName";
+    private static final String ID = "id";
+    private static final String LAST_NAME = "lastName";
+    private static final String MIDDLE_NAME = "middleName";
+    private static final String UPDATED_AT = "updatedAt";
+    private static final String UUID = "uuid";
 }

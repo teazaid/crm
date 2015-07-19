@@ -146,4 +146,10 @@ public class Payment implements Uuidable, Serializable {
         //TODO implementation is expected
         return super.equals(obj);
     }
+
+    @Override
+    public String toString() {
+        //TODO implementation is expected
+        return super.toString();
+    }
 }
