@@ -21,7 +21,7 @@ public class PersonDeserializerTest {
     public void init() {
         mapper = new ObjectMapper();
         // basic module metadata just includes name and version (both for troubleshooting; but name needs to be unique)
-        SimpleModule module = new SimpleModule("EnhancedDatesModule", new Version(0, 1, 0, "alpha"));
+        SimpleModule module = new SimpleModule("PersonDeserializerTest", new Version(0, 1, 0, "alpha"));
         // functionality includes ability to register serializers, deserializers, add mix-in annotations etc:
         module.addDeserializer(Person.class, new PersonDeserializer());
         // and the magic happens here when we register module with mapper:
