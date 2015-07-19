@@ -14,6 +14,6 @@ public class UuidListener {
 
     @PrePersist
     public void generateUuid(Uuidable uuidable) {
-        uuidable.setUuid(UUID.randomUUID().getMostSignificantBits());
+        uuidable.setUuid(UUID.randomUUID().toString());
     }
 }

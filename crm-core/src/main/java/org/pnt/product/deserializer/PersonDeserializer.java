@@ -33,7 +33,7 @@ public class PersonDeserializer extends JsonDeserializer<Person> {
                 .setLastName(jsonNodeToString(jsonNode, LAST_NAME))
                 .setMiddleName(jsonNodeToString(jsonNode, MIDDLE_NAME))
                 .setUpdatedAt(jsonNodeToDate(jsonNode, UPDATED_AT))
-                .setUuid(jsonNodeToLong(jsonNode, UUID))
+                .setUuid(jsonNodeToString(jsonNode, UUID))
         .build();
     }
 

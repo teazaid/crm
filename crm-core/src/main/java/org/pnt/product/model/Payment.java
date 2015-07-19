@@ -19,7 +19,7 @@ public class Payment implements Uuidable, Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long uuid;
+    private String uuid;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -119,11 +119,11 @@ public class Payment implements Uuidable, Serializable {
         this.paymentMethod = paymentMethod;
     }
 
-    public Long getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(Long uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

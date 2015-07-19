@@ -20,7 +20,7 @@ public class PersonService {
         return personDao.saveOrUpdate(person);
     }
 
-    public Collection<Person> findByUuid(long uuid) {
+    public Collection<Person> findByUuid(String uuid) {
         return personDao.findByQuery(NamedQueries.Person.BY_UUID, Person.class, uuid);
     }
 

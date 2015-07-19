@@ -16,7 +16,7 @@ public class Visit implements Uuidable, Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long uuid;
+    private String uuid;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -70,11 +70,11 @@ public class Visit implements Uuidable, Serializable {
         this.subscription = subscription;
     }
 
-    public Long getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(Long uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

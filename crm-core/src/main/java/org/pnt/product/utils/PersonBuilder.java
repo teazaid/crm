@@ -10,7 +10,7 @@ import java.util.Date;
 public class PersonBuilder {
 
     private Long id;
-    private Long uuid;
+    private String uuid;
     private String email;
     private String firstName;
     private String lastName;
@@ -24,7 +24,7 @@ public class PersonBuilder {
         return this;
     }
 
-    public PersonBuilder setUuid(Long uuid) {
+    public PersonBuilder setUuid(String uuid) {
         this.uuid = uuid;
         return this;
     }

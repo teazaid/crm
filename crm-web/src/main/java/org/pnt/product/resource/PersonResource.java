@@ -26,7 +26,7 @@ public class PersonResource {
 
     @RequestMapping(value = "/{uuid}", method = RequestMethod.GET)
     @ResponseBody
-    public Person findByUuid(@PathVariable("uuid") long uuid) {
+    public Person findByUuid(@PathVariable("uuid") String uuid) {
         return personService.findByUuid(uuid).iterator().next();
     }
 }

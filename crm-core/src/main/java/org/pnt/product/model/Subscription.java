@@ -19,7 +19,7 @@ public class Subscription implements Uuidable, Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long uuid;
+    private String uuid;
 
     private Long amount;
 
@@ -120,11 +120,11 @@ public class Subscription implements Uuidable, Serializable {
         this.endDate = endDate;
     }
 
-    public Long getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(Long uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

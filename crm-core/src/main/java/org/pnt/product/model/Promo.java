@@ -4,6 +4,7 @@ import org.pnt.product.model.enumerate.DiscountType;
 import org.pnt.product.model.enumerate.PromoType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -12,10 +13,12 @@ import java.util.HashSet;
  * Created by Alexander on 08.06.2015.
  */
 @Entity
-public class Promo {
+public class Promo implements Uuidable, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String uuid;
 
     @Enumerated(EnumType.STRING)
     private DiscountType discountType;
@@ -114,5 +117,13 @@ public class Promo {
     public String toString() {
         //TODO implementation is expected
         return super.toString();
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

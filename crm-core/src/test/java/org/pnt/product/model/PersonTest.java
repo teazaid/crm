@@ -40,7 +40,7 @@ public class PersonTest {
                 .setLastName(testLastName)
                 .setMiddleName(testMiddleName)
                 .setId(0l)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         Person fullPerson2 = new PersonBuilder()
@@ -51,7 +51,7 @@ public class PersonTest {
                 .setFirstName(testFirstName)
                 .setLastName(testLastName)
                 .setMiddleName(testMiddleName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         Person emptyPerson = new PersonBuilder().build();
@@ -65,7 +65,7 @@ public class PersonTest {
                 .setFirstName(testLastName)
                 .setLastName(testLastName)
                 .setMiddleName(testMiddleName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         Person diffLastNamePerson = new PersonBuilder()
@@ -76,7 +76,7 @@ public class PersonTest {
                 .setFirstName(testFirstName)
                 .setLastName(testFirstName)
                 .setMiddleName(testMiddleName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
         Person diffMiddleNamePerson = new PersonBuilder()
                 .setBirthDay(now)
@@ -86,7 +86,7 @@ public class PersonTest {
                 .setFirstName(testFirstName)
                 .setLastName(testLastName)
                 .setMiddleName(testLastName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         Person diffEmailPerson = new PersonBuilder()
@@ -97,7 +97,7 @@ public class PersonTest {
                 .setFirstName(testFirstName)
                 .setLastName(testLastName)
                 .setMiddleName(testLastName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         Person diffBirthdayPerson = new PersonBuilder()
@@ -108,7 +108,7 @@ public class PersonTest {
                 .setFirstName(testFirstName)
                 .setLastName(testLastName)
                 .setMiddleName(testMiddleName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         Person diffCreatedAtPerson = new PersonBuilder()
@@ -119,7 +119,7 @@ public class PersonTest {
                 .setFirstName(testFirstName)
                 .setLastName(testLastName)
                 .setMiddleName(testMiddleName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         Person diffUpdatedAtPerson = new PersonBuilder()
@@ -130,7 +130,7 @@ public class PersonTest {
                 .setFirstName(testFirstName)
                 .setLastName(testLastName)
                 .setMiddleName(testMiddleName)
-                .setUuid(777l)
+                .setUuid("777l")
                 .build();
 
         return new Object[][] {
