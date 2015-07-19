@@ -22,38 +22,39 @@ import java.util.Date;
 public class PersonDeserializer extends JsonDeserializer<Person> {
     @Override
     public Person deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-
         ObjectCodec codec = jsonParser.getCodec();
         JsonNode jsonNode = codec.readTree(jsonParser);
-
         // TODO cover with the tests
         return new PersonBuilder()
                 .setBirthDay(jsonNodeToDate(jsonNode, "birthDay"))
                 .setCreatedAt(jsonNodeToDate(jsonNode, "createdAt"))
-                .setEmail(jsonNode.get("email").textValue())
-                .setFirstName(jsonNode.get("firsName").textValue())
-                .setId(jsonNode.get("id").asLong())
-                .setLastName(jsonNode.get("lastName").textValue())
-                .setMiddleName(jsonNode.get("middleName").textValue())
+                .setEmail(jsonNodeToString(jsonNode, "email"))
+                .setFirstName(jsonNodeToString(jsonNode, "firstName"))
+                .setId(jsonNodeToLong(jsonNode, "id"))
+                .setLastName(jsonNodeToString(jsonNode, "lastName"))
+                .setMiddleName(jsonNodeToString(jsonNode, "middleName"))
                 .setUpdatedAt(jsonNodeToDate(jsonNode, "updatedAt"))
-                .setUuid(jsonNode.get("uuid").asLong())
-            .build();
+                .setUuid(jsonNodeToLong(jsonNode, "uuid"))
+        .build();
     }
 
     private Date jsonNodeToDate(JsonNode node, String key) {
         Date result = null;
         try {
-            result = DateUtils.convertToDate(getDateString(node, key));
+            result = DateUtils.convertToDate(jsonNodeToString(node, key));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return result == null ? DateUtils.now() : result;
+        return result;
     }
 
-    private String getDateString(JsonNode node, String key) {
-        String result = node.get(key).textValue();
+    private String jsonNodeToString(JsonNode node, String key) {
+        JsonNode jsonNode = node.get(key);
+        return jsonNode == null ? null : jsonNode.textValue();
+    }
 
-        //return result == null ? DateUtils.convertToString(DateUtils.now()): result ;
-        return result;
+    private Long jsonNodeToLong(JsonNode node, String key) {
+        JsonNode jsonNode = node.get(key);
+        return jsonNode == null ? null : jsonNode.longValue();
     }
 }

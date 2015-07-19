@@ -6,10 +6,7 @@ import org.pnt.product.org.pnt.product.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Alexander on 09.06.2015.
@@ -21,12 +18,10 @@ public class PersonResource {
     @Autowired
     private PersonService personService;
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Person create() {
-
-        Person newPerson = personService.createNewPerson("");
-        return newPerson;
+    public Person create(@RequestBody Person person) {
+        return personService.createNewPerson(person);
     }
 
     @RequestMapping(value = "/{uuid}", method = RequestMethod.GET)

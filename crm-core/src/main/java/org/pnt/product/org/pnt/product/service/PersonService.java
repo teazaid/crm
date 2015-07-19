@@ -16,11 +16,8 @@ public class PersonService {
     @Autowired
     private PersonDao personDao;
 
-    public Person createNewPerson(String email) {
-        Person p = new Person();
-        p.setEmail(email);
-
-        return personDao.saveOrUpdate(p);
+    public Person createNewPerson(Person person) {
+        return personDao.saveOrUpdate(person);
     }
 
     public Collection<Person> findByUuid(long uuid) {

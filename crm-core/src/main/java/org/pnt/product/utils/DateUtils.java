@@ -1,5 +1,7 @@
 package org.pnt.product.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,13 +15,21 @@ public class DateUtils {
     }
 
     public static Date convertToDate(String dateStr) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_FORMAT_PATTERN);
-        return sdf.parse(dateStr);
+        Date result = null;
+        if(!StringUtils.isEmpty(dateStr)) {
+            SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_FORMAT_PATTERN);
+            result = sdf.parse(dateStr);
+        }
+        return result;
     }
 
     public static String convertToString(Date date) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_FORMAT_PATTERN);
-        return sdf.format(date);
+        String result = null;
+        if(date != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_FORMAT_PATTERN);
+            result = sdf.format(date);
+        }
+        return result;
     }
 
     public static final String DEFAULT_DATE_FORMAT_PATTERN = "yyyy-MM-dd HH:mm:ss";

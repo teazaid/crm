@@ -1,6 +1,7 @@
 package org.pnt.product.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.pnt.product.NamedQueries;
 import org.pnt.product.deserializer.PersonDeserializer;
@@ -173,5 +174,18 @@ public class Person implements Uuidable, Serializable {
 
     public void setUuid(Long uuid) {
         this.uuid = uuid;
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append(email).append(StringUtils.SPACE)
+                .append(firstName).append(StringUtils.SPACE)
+                .append(lastName).append(StringUtils.SPACE)
+                .append(middleName).append(StringUtils.SPACE)
+                .append(birthday).append(StringUtils.SPACE)
+                .append(createdAt).append(StringUtils.SPACE)
+                .append(updatedAt).append(StringUtils.SPACE)
+                .toString();
     }
 }
