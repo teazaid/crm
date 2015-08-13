@@ -16,6 +16,18 @@
     <packaging>war</packaging>
 
     <dependencies>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.pnt.product</groupId>
             <artifactId>crm-core</artifactId>
@@ -42,6 +54,10 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+        </dependency>
 
     </dependencies>
 </project>

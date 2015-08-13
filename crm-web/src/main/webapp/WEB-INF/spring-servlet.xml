@@ -11,8 +11,24 @@
     <!-- more bean definitions for data access objects go here -->
 
     <!--<mvc:default-servlet-handler/> -->
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
     <context:component-scan base-package="org.pnt.product.resource" />
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
-    <import resource="classpath:spring-context.xml" />
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!--<import resource="classpath:spring-context.xml" /> -->
 </beans>

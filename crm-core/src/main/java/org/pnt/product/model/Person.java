@@ -3,6 +3,9 @@ package org.pnt.product.model;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 import org.pnt.product.NamedQueries;
 import org.pnt.product.deserializer.PersonDeserializer;
 import org.pnt.product.listeners.UuidListener;
@@ -16,8 +19,13 @@ import java.util.Date;
  */
 @javax.persistence.NamedQueries({
         @NamedQuery(name = NamedQueries.Person.BY_UUID, query = "select p from Person p where p.uuid = ?1"),
-        @NamedQuery(name = NamedQueries.Person.BY_EMAIL, query = "select p from Person p where p.email = ?1")
+        @NamedQuery(name = NamedQueries.Person.BY_EMAIL, query = "select p from Person p where p.email = ?1"),
+        @NamedQuery(name = NamedQueries.Person.SELECT_ALL, query = "select p from Person p ")
 })
+/*@DynamicInsert
+@DynamicUpdate*/
+//@SelectBeforeUpdate
+
 @Entity
 @EntityListeners(value = {UuidListener.class})
 @JsonDeserialize(using = PersonDeserializer.class)

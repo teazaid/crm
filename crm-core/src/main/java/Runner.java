@@ -9,8 +9,11 @@ import javax.persistence.Persistence;
  */
 public class Runner {
     public static void main(String[] args) {
+
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("crm-pu");
+
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+
 
         Person p = new Person();
 
@@ -18,6 +21,10 @@ public class Runner {
         entityManager.persist(p);
         entityManager.getTransaction().commit();
 
+        entityManager.getTransaction().begin();
+        Person person1 = entityManager.find(Person.class, 1l);
+        person1.setEmail("f");
+        entityManager.getTransaction().commit();
 
         entityManager.close();
         entityManagerFactory.close();

@@ -24,5 +24,7 @@ public class PersonService {
         return personDao.findByQuery(NamedQueries.Person.BY_UUID, Person.class, uuid);
     }
 
-
+    public Collection<Person> findByNamedQuery(String queryName) {
+        return personDao.findByQuery(queryName, Person.class);
+    }
 }
